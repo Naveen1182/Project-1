@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <centre>  <title>LoginForm</title> </centre>
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* The image used */
+  background-image: url("1234.jpeg");
+ 
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+ 
+  /* Full height */
+  height: 100%;
+ 
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* Style the LoginForm container */
+form[name="LoginForm"] {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Style form elements within the LoginForm */
+form[name="LoginForm"] input[type="text"],
+form[name="LoginForm"] input[type="email"],
+form[name="LoginForm"] input[type="password"],
+form[name="LoginForm"] textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+form[name="LoginForm"] input[type="submit"] {
+  background-color: #000; /* Change to black */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form[name="LoginForm"] input[type="submit"]:hover {
+  background-color: #333; /* Darken the hover color if desired */
+}
+
+/* Style form labels within the LoginForm */
+form[name="LoginForm"] label {
+  font-weight: bold;
+}
+
+/* Add some spacing and margin for better readability */
+form[name="LoginForm"] label,
+form[name="LoginForm"] p {
+  margin-bottom: 10px;
+}
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: black;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Customize the form container background color */
+body {
+  background-image: url('path/to/your/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Optional, makes the background image fixed */
+}
+
+</style>
+
+
+</style>
+   
+</head>
+<body>
+
+ 
+<div class="bg-image"></div>
+<div class="bg-text">
+<center>
+    <h2 style="color: whitesmoke;">Select the District from The List Below</h2>
+    <form action="mapdetails.html">
+  <label for="District" style="color:whitesmoke;">Choose a District:</label>
+  <select name="District" id="District">
+    <optgroup label="tamilnadu region">
+    <option value="Dindigul">Dindigul</option>
+      <option value="coimbatore">Coimbatore</option>
+      <option value="tirupur">Tirupur</option>
+      <option value="madurai">Madurai</option>
+      <option value="chennai">Chennai</option>
+      <option value="theni">Theni</option>
+      <option value="salem">Salem</option>
+    </optgroup>
+  </select>
+  <br><br>
+  <input type="submit" value="Submit" class="button">
+</form>
+</body>
+</center>
+</div>
+</html>

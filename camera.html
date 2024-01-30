@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body>
+
+<h2>Vadipatti Cameras</h2>
+<p>Select the camera in which you have to display the details</p>
+
+<div class="row">
+  <div class="column">
+    <a href="index.html">
+    <img src="entrance.jpeg" alt="front" style="width:100%,hieght:20%">
+    <h1>Entrance</h1>
+  </a>
+  </div>
+  <div class="column">
+    <a href="index.html">
+    <img src="midtown.jpeg" alt="mid" style="width:130%,hieght:30%">
+    <h1>Midtown</h1>
+  </a>
+  </div>
+  <div class="column">
+    <a href="index.html">
+    <img src="exit.jpeg" alt="exit" style="width:90%,hieght:15%">
+    <h1>Exit</h1>
+  </a>
+  </div>
+</div>
+
+</body>
+</html>
