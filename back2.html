@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Number Plate Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f4f8;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Check Vehicle Number Plate</h2>
+    <input type="text" id="vehicleNumber" placeholder="Enter Vehicle Number" />
+    <button id="checkButton">Check</button>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('checkButton').addEventListener('click', function() {
+            const vehicleNumber = document.getElementById('vehicleNumber').value;
+            fetch(`http://localhost:3000/check-vehicle?number=${vehicleNumber}`)
+                .then(response => response.json())
+                .then(data => {
+                    const resultDiv = document.getElementById('result');
+                    if (data.exists) {
+                        resultDiv.innerHTML = `Vehicle Number ${vehicleNumber} exists.`;
+                    } else {
+                        resultDiv.innerHTML = `Vehicle Number ${vehicleNumber} does not exist.`;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+</html>

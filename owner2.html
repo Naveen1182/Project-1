@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Owner Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e8f0fe, #f0f4f8);
+            margin: 0;
+            padding: 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: 500;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        button.pay-btn {
+            padding: 8px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        button.pay-btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .no-fines {
+            text-align: center;
+            color: #777;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                margin: 20px auto;
+            }
+
+            table th, table td {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            button.pay-btn {
+                padding: 7px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, Vehicle Owner</h2>
+        <div id="finesContainer">
+            <!-- Fines will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        const queryParams = new URLSearchParams(window.location.search);
+        const vehicleNumber = queryParams.get('vehicle');
+
+        const finesData = [
+            { id: 1, vehicleNumber: 'TN45AB1234', violationType: 'Over Speeding', date: '2024-10-01', fineAmount: 1000, status: 'Unpaid' },
+            { id: 2, vehicleNumber: 'TN45AB1234', violationType: 'Signal Jumping', date: '2024-09-25', fineAmount: 500, status: 'Paid' },
+            { id: 3, vehicleNumber: 'TN12BC5678', violationType: 'Over Speeding', date: '2024-10-01', fineAmount: 1000, status: 'Unpaid' },
+            { id: 4, vehicleNumber: 'TN34XY9012', violationType: 'No Seatbelt', date: '2024-09-29', fineAmount: 500, status: 'Unpaid' },
+            { id: 5, vehicleNumber: 'TN18XZ0001', violationType: 'Wrong Parking', date: '2024-09-28', fineAmount: 750, status: 'Unpaid' },
+            { id: 6, vehicleNumber: 'TN22YY2222', violationType: 'Using Mobile While Driving', date: '2024-09-27', fineAmount: 2000, status: 'Unpaid' },
+            { id: 7, vehicleNumber: 'TN56FF7777', violationType: 'Expired Registration', date: '2024-09-26', fineAmount: 1000, status: 'Unpaid' },
+            { id: 8, vehicleNumber: 'TN98GH1234', violationType: 'Driving Without License', date: '2024-09-25', fineAmount: 1500, status: 'Unpaid' },
+            { id: 9, vehicleNumber: 'TN77JK5678', violationType: 'Loud Music', date: '2024-09-24', fineAmount: 300, status: 'Unpaid' },
+            { id: 10, vehicleNumber: 'TN11LM9012', violationType: 'Illegal U-Turn', date: '2024-09-23', fineAmount: 800, status: 'Unpaid' },
+            { id: 11, vehicleNumber: 'TN44MN3456', violationType: 'Not Wearing Helmet', date: '2024-09-22', fineAmount: 500, status: 'Unpaid' },
+            { id: 12, vehicleNumber: 'TN23OP6789', violationType: 'Obstructing Traffic', date: '2024-09-21', fineAmount: 1200, status: 'Unpaid' },
+            { id: 13, vehicleNumber: 'TN88QR1234', violationType: 'Driving in Restricted Area', date: '2024-09-20', fineAmount: 2500, status: 'Unpaid' },
+            { id: 14, vehicleNumber: 'TN65ST5678', violationType: 'Failure to Stop at Red Light', date: '2024-09-19', fineAmount: 900, status: 'Unpaid' },
+            { id: 15, vehicleNumber: 'TN12AB3456', violationType: 'Parking in No-Parking Zone', date: '2024-09-18', fineAmount: 600, status: 'Unpaid' },
+            { id: 16, vehicleNumber: 'TN43CD7890', violationType: 'Drunk Driving', date: '2024-09-17', fineAmount: 5000, status: 'Unpaid' },
+            { id: 17, vehicleNumber: 'TN98EF1234', violationType: 'Illegal Modification', date: '2024-09-16', fineAmount: 1200, status: 'Unpaid' },
+        ];
+
+        function renderFines() {
+            const finesContainer = document.getElementById('finesContainer');
+            const finesForVehicle = finesData.filter(fine => fine.vehicleNumber === vehicleNumber);
+
+            if (finesForVehicle.length === 0) {
+                finesContainer.innerHTML = `<p class="no-fines">No fines found for vehicle number ${vehicleNumber}</p>`;
+                return;
+            }
+
+            let tableHTML = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Violation Type</th>
+                            <th>Date</th>
+                            <th>Fine Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            finesForVehicle.forEach(fine => {
+                tableHTML += `
+                    <tr>
+                        <td>${fine.violationType}</td>
+                        <td>${fine.date}</td>
+                        <td>₹${fine.fineAmount}</td>
+                        <td>${fine.status}</td>
+                        <td>
+                            ${fine.status === 'Unpaid' ? `<button class="pay-btn" data-id="${fine.id}">Pay Now</button>` : 'Paid'}
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += '</tbody></table>';
+            finesContainer.innerHTML = tableHTML;
+
+            document.querySelectorAll('.pay-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const fineId = e.target.dataset.id;
+                    alert(`Paying fine with ID: ${fineId}`);
+                    // Implement payment logic here
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', renderFines);
+    </script>
+</body>
+</html>

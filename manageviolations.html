@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Violations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2, h3 {
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 10px);
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        .btn {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+        .violations-container {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Manage Violations</h2>
+        
+        <!-- Add New Violation Form -->
+        <div class="form-group">
+            <h3>Add New Violation</h3>
+            <form id="add-violation-form">
+                <label for="vehicleNumber">Vehicle Number:</label>
+                <input type="text" id="vehicleNumber" name="vehicleNumber" required>
+                
+                <label for="violationType">Violation Type:</label>
+                <input type="text" id="violationType" name="violationType" required>
+                
+                <label for="fineAmount">Fine Amount:</label>
+                <input type="number" id="fineAmount" name="fineAmount" required>
+                
+                <button type="submit" class="btn">Add Violation</button>
+            </form>
+        </div>
+
+        <!-- Violations Table -->
+        <div class="violations-container">
+            <h3>Existing Violations</h3>
+            <table id="violations-table">
+                <thead>
+                    <tr>
+                        <th>Vehicle Number</th>
+                        <th>Violation Type</th>
+                        <th>Date</th>
+                        <th>Fine Amount</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TN45AB1234</td>
+                        <td>Over Speeding</td>
+                        <td>2024-10-01</td>
+                        <td>₹1000</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN12BC5678</td>
+                        <td>Signal Jumping</td>
+                        <td>2024-09-30</td>
+                        <td>Paid</td>
+                        <td>Resolved</td>
+                        <td><button class="btn">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN34XY9012</td>
+                        <td>No Seatbelt</td>
+                        <td>2024-09-29</td>
+                        <td>₹500</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN18XZ0001</td>
+                        <td>Wrong Parking</td>
+                        <td>2024-09-28</td>
+                        <td>₹750</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN22YY2222</td>
+                        <td>Using Mobile While Driving</td>
+                        <td>2024-09-27</td>
+                        <td>₹2000</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN56FF7777</td>
+                        <td>Expired Registration</td>
+                        <td>2024-09-26</td>
+                        <td>₹1000</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN98GH1234</td>
+                        <td>Driving Without License</td>
+                        <td>2024-09-25</td>
+                        <td>₹1500</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN77JK5678</td>
+                        <td>Loud Music</td>
+                        <td>2024-09-24</td>
+                        <td>₹300</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN11LM9012</td>
+                        <td>Illegal U-Turn</td>
+                        <td>2024-09-23</td>
+                        <td>₹800</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN44MN3456</td>
+                        <td>Not Wearing Helmet</td>
+                        <td>2024-09-22</td>
+                        <td>₹500</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN23OP6789</td>
+                        <td>Obstructing Traffic</td>
+                        <td>2024-09-21</td>
+                        <td>₹1200</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN88QR1234</td>
+                        <td>Driving in Restricted Area</td>
+                        <td>2024-09-20</td>
+                        <td>₹2500</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN65ST5678</td>
+                        <td>Failure to Stop at Red Light</td>
+                        <td>2024-09-19</td>
+                        <td>₹900</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN12AB3456</td>
+                        <td>Parking in No-Parking Zone</td>
+                        <td>2024-09-18</td>
+                        <td>₹600</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN43CD7890</td>
+                        <td>Drunk Driving</td>
+                        <td>2024-09-17</td>
+                        <td>₹5000</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                    <tr>
+                        <td>TN98EF1234</td>
+                        <td>Illegal Modification</td>
+                        <td>2024-09-16</td>
+                        <td>₹1200</td>
+                        <td>Unpaid</td>
+                        <td><button class="btn">Resolve</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="violations.js"></script> <!-- Adjust path if needed -->
+</body>
+</html>

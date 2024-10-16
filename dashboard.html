@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTO Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            height: 100vh; /* Full height of the viewport */
+            display: flex;
+            flex-direction: column;
+            width: 100%; /* Full width of the viewport */
+        }
+
+        .dashboard-container {
+            flex: 1; /* Fill remaining space */
+            background: #fff;
+            border-radius: 0; /* Remove border radius for full width */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column; /* Stack navbar and grid vertically */
+            width: 100%; /* Ensure container uses full width */
+            height: 100%; /* Ensure container uses full height */
+        }
+
+        h2 {
+            text-align: center;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #218838; /* Darker green for better contrast */
+            color: white;
+            padding: 10px;
+            border-radius: 0; /* Remove border radius for full width */
+            margin-bottom: 20px; /* Space below navbar */
+            width: 100%; /* Full width of the navbar */
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #0056b3; /* Change on hover for better visibility */
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            flex: 1; /* Allow grid container to grow and fill available space */
+            overflow-y: auto; /* Allow scrolling if content exceeds height */
+            width: 100%; /* Ensure grid container uses full width */
+        }
+
+        .card {
+            background: #f8f9fa;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            height: 100%; /* Ensure cards stretch to fill their grid cells */
+            transition: transform 0.2s; /* Add transition for hover effect */
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Lift card on hover */
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #007bff; /* Color for the card titles */
+            text-align: center; /* Center the headings */
+        }
+
+        .card ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            padding: 10px 0; /* More padding for better readability */
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 900px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar a {
+                margin: 5px 0;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr; /* Stack cards vertically on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="navbar">
+            <h2>RTO Dashboard</h2>
+            <div>
+                <a href="report.html">Generate Report</a>
+                <a href="manageviolations.html">Manage Violations</a>
+                <a href="login.html">Logout</a>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="card">
+                <h3>Upcoming Violations</h3>
+                <ul>
+                    <li>Vehicle TN45AB1234: Over Speeding - Unpaid Fine: ₹1000</li>
+                    <li>Vehicle TN12BC5678: Signal Jumping - Paid</li>
+                    <li>Vehicle TN34XY9012: No Seatbelt - Unpaid Fine: ₹500</li>
+                    <li>Vehicle TN18XZ0001: Wrong Parking - Unpaid Fine: ₹750</li>
+                    <li>Vehicle TN22YY2222: Using Mobile While Driving - Unpaid Fine: ₹2000</li>
+                    <li>Vehicle TN56FF7777: Expired Registration - Unpaid Fine: ₹1000</li>
+                    <li>Vehicle TN98GH1234: Driving Without License - Unpaid Fine: ₹1500</li>
+                    <li>Vehicle TN77JK5678: Loud Music - Unpaid Fine: ₹300</li>
+                    <li>Vehicle TN11LM9012: Illegal U-Turn - Unpaid Fine: ₹800</li>
+                    <li>Vehicle TN44MN3456: Not Wearing Helmet - Unpaid Fine: ₹500</li>
+                    <li>Vehicle TN23OP6789: Obstructing Traffic - Unpaid Fine: ₹1200</li>
+                    <li>Vehicle TN88QR1234: Driving in Restricted Area - Unpaid Fine: ₹2500</li>
+                    <li>Vehicle TN65ST5678: Failure to Stop at Red Light - Unpaid Fine: ₹900</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Recent Activities</h3>
+                <ul>
+                    <li>2024-10-01: Recorded violation for TN45AB1234</li>
+                    <li>2024-09-30: Updated status for TN12BC5678</li>
+                    <li>2024-09-29: New violation recorded for TN34XY9012</li>
+                    <li>2024-09-28: Recorded violation for TN18XZ0001</li>
+                    <li>2024-09-27: Updated status for TN22YY2222</li>
+                    <li>2024-09-26: Recorded violation for TN56FF7777</li>
+                    <li>2024-09-25: New violation recorded for TN98GH1234</li>
+                    <li>2024-09-24: Updated status for TN77JK5678</li>
+                    <li>2024-09-23: Recorded violation for TN11LM9012</li>
+                    <li>2024-09-22: Updated status for TN44MN3456</li>
+                    <li>2024-09-21: Recorded violation for TN23OP6789</li>
+                    <li>2024-09-20: New violation recorded for TN88QR1234</li>
+                    <li>2024-09-19: Recorded violation for TN65ST5678</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Statistics</h3>
+                <ul>
+                    <li>Total Violations: 150</li>
+                    <li>Paid Fines: ₹75,000</li>
+                    <li>Pending Fines: ₹30,000</li>
+                    <li>Total Vehicles Monitored: 300</li>
+                    <li>Violations Resolved: 120</li>
+                    <li>Pending Violations: 30</li>
+                    <li>Total Registered Vehicles: 5000</li>
+                    <li>Monthly Violations: 200</li>
+                    <li>Top Violation Type: Over Speeding</li>
+                    <li>Most Active Day: Saturday</li>
+                    <li>Average Fine Amount: ₹850</li>
+                    <li>Most Violated Area: City Center</li>
+                    <li>Average Violations per Vehicle: 2</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button class="btn" onclick="window.location.href='report.html'">Generate Report</button>
+        </div>
+    </div

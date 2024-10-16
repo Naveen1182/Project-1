@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Report</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .report-container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #5a5a5a;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        select, input[type="date"], button {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s;
+        }
+
+        select:focus, input[type="date"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #report-output {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            display: none;
+            overflow-x: auto;
+        }
+
+        pre {
+            white-space: pre-wrap; /* Allows wrapping */
+            word-wrap: break-word; /* Prevents overflow */
+        }
+
+        @media (max-width: 600px) {
+            .report-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <h2>Generate Vehicle Violation Report</h2>
+        
+        <!-- Report Generation Form -->
+        <form id="report-form">
+            <label for="report-type">Select Report Type:</label>
+            <select id="report-type" name="reportType" required>
+                <option value="">--Select--</option>
+                <option value="all">All Violations</option>
+                <option value="by-date">Violations by Date</option>
+            </select>
+
+            <div id="date-range" style="display:none;">
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" name="startDate">
+                
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" name="endDate">
+            </div>
+
+            <button type="submit" class="btn">Generate Report</button>
+        </form>
+
+        <!-- Report Output -->
+        <div id="report-output">
+            <h3>Generated Report</h3>
+            <pre id="report-content"></pre>
+        </div>
+    </div>
+
+    <script src="report.js"></script>
+</body>
+</html>

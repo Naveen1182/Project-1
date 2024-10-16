@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Report</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="report-container">
+        <h2>Generate Vehicle Violation Report</h2>
+        
+        <!-- Report Generation Form -->
+        <form id="report-form">
+            <label for="report-type">Select Report Type:</label>
+            <select id="report-type" name="reportType" required>
+                <option value="">--Select--</option>
+                <option value="all">All Violations</option>
+                <option value="by-date">Violations by Date</option>
+            </select>
+
+            <div id="date-range" style="display:none;">
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" name="startDate">
+                
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" name="endDate">
+            </div>
+
+            <button type="submit" class="btn">Generate Report</button>
+        </form>
+
+        <!-- Report Output -->
+        <div id="report-output" style="display:none;">
+            <h3>Generated Report</h3>
+            <pre id="report-content"></pre>
+        </div>
+    </div>
+
+    <script src="generate-report.js"></script>
+</body>
+</html>
